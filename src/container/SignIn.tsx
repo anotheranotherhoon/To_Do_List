@@ -1,16 +1,12 @@
 import { ChangeMode, InputWrapper, SubmitBtn, FormContainer } from "./style"
 import { useForm } from "react-hook-form";
 import { signIn } from "../api/auth";
+import type { IAuth, IAuthProps } from "../type/types"; 
 
-interface IForm {
-  email: string;
-  password: string;
-}
 
-const SignIn = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
-  const { register, handleSubmit, watch,getValues } = useForm<IForm>()
-  console.log(watch())
-  const handleSignIn = (data: IForm) => {
+const SignIn = ({ isSignInMode, handleChangeMode, hadleModalOpen }: IAuthProps) => {
+  const { register, handleSubmit, watch,getValues } = useForm<IAuth>()
+  const handleSignIn = (data: IAuth) => {
     signIn(data, hadleModalOpen)
   }
   const handleEnterPress = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -35,9 +31,10 @@ const SignIn = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
         <input
           {...register('password')}
           onKeyDown={handleEnterPress}
+          type='password'
         />
       </InputWrapper>
-      <ChangeMode type='button' onClick={(e) => handleChangeMode(e)}>회원가입하러가기</ChangeMode>
+      <ChangeMode type='button' onClick={() => handleChangeMode()}>회원가입하러가기</ChangeMode>
       <SubmitBtn >{isSignInMode}</SubmitBtn>
     </FormContainer>
 

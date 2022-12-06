@@ -1,17 +1,13 @@
 import { signUp } from '../api/auth'
 import { ChangeMode, InputWrapper, SubmitBtn, FormContainer } from "./style"
 import { useForm } from "react-hook-form";
+import { IAuthProps,ISignUpAuth } from '../type/types';
 
-const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
+const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: IAuthProps) => {
 
-  interface IForm {
-    email: string;
-    password: string;
-    password1: string;
-  }
-
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<IForm>()
-  const handleSignUp = (data: IForm)=> {
+  const { register, handleSubmit, formState: { errors } } = useForm<ISignUpAuth>()
+  console.log(errors?.password?.message)
+  const handleSignUp = (data: ISignUpAuth) => {
     signUp({
       email: data.email,
       password: data.password,
@@ -19,16 +15,16 @@ const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
       handleChangeMode
     )
   }
-  console.log(watch())
   return (
     <FormContainer onSubmit={handleSubmit(handleSignUp)}>
+      <h1>{isSignInMode}</h1>
       <InputWrapper key='1'>
         <label id="email">이메일</label>
         <input {...register('email', {
           required: '이메일을 입력해주세요',
           pattern: {
-            value: /^[A-Za-z0-9._%+-]+@naver.com$/,
-            message: "Only naver.com emails allowed",
+            value: /@/,
+            message: "이메일은 @를 포함하셔야합니다.",
           }
         })}
         />
@@ -39,8 +35,12 @@ const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
         <input
           {...register('password', {
             required: '비밀번호를 입력해주세요',
-            minLength: 8
+            pattern : {
+              value : /.{8,}/,
+              message: "비밀번호는 8자 이상이어야 합니다.",
+            }
           })}
+          type='password'
         />
         <span>{errors?.password?.message}</span>
       </InputWrapper>
@@ -49,11 +49,8 @@ const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: any) => {
         <input
           {...register('password1', {
             required: '비밀번호를 다시 입력해주세요.',
-            minLength: {
-              value: 8,
-              message: '비밀번호는 8글자 이상이어야 합니다.'
-            }
           })}
+          type='password'
         />
       </InputWrapper>
       <ChangeMode type='button' onClick={() => handleChangeMode()}>로그인하러가기</ChangeMode>
