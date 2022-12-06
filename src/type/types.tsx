@@ -17,7 +17,7 @@ export interface IAuth {
 export interface IAuthProps {
   isSignInMode : string;
   handleChangeMode() : void;
-  hadleModalOpen(message:string) : void;
+  handleModalOpen(message:string) : void;
 }
 
 export interface ISignUpAuth {
@@ -72,5 +72,5 @@ export interface IStyledFilter {
 }
 
 export interface IHeader {
-  handleModalOpen(number : number, message : string) : void;
+  handleModalOpen(message : string, number : string,) : void;
 }

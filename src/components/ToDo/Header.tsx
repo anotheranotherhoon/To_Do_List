@@ -6,7 +6,7 @@ const Header = ({handleModalOpen} : IHeader) => {
     <Wrapper>
     <h1>To Do List</h1>
     <LogOut>
-      <span className='btnName' onClick={() => handleModalOpen(1, '로그아웃 하시겠습니까?')}>로그아웃</span>
+      <span className='btnName' onClick={() => handleModalOpen('로그아웃 하시겠습니까?','logout')}>로그아웃</span>
     </LogOut>
   </Wrapper>
   )

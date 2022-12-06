@@ -5,3 +5,8 @@ export const setToken = (token : string) => {
 export const getToken = () => {
   return window.localStorage.getItem('token')
 };
+
+export const handleLogOut = () => {
+  window.localStorage.removeItem('token')
+  window.location.reload()
+}
