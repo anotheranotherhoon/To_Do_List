@@ -54,6 +54,30 @@
 ![badge](https://img.shields.io/badge/styled%20components-DB7093?style=flat-square&logo=styled%20components&logoColor=white) ![badge](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white)  ![badge](https://img.shields.io/badge/React%20Query-df5054?style=flat-square&logo=React-Query&logoColor=white)
 ![badge](https://img.shields.io/badge/Recoil-4976e0?style=flat-square&logo=Recoil&logoColor=white)  
 
+## **🖥 프로젝트 실행 방법**
+
+### **1. root 경로에 .env 파일 생성 후 환경변수 설정**
+<p align="center">
+  <br>
+  <img src="./images/env.png">
+  <br>
+</p>
+
+```
+REACT_APP_URL = https://pre-onboarding-selection-task.shop
+```
+
+### **2. 아래 명령어로 의존성 패키지들을 설치합니다.**
+```
+$ npm install
+```
+
+### **3. 아래 명령어로 실행시킵니다.**
+
+```
+$ npm run start
+```
+
 ## **📝 디렉토리 구조**
 
 ```
@@ -68,29 +92,9 @@
    ┗ 📂type
    ┗ 📂utils
    ┗ 📂assets
-    ┗📄app.tsx
-    ┗📄index.tsx
-    ┗📄Router.tsx
-```
-
-## **🖥 프로젝트 실행 방법**
-
-### **1. root 경로에 .env 파일 생성 후 환경변수 설정**
-<p align="center">
-  <br>
-  <img src="./images/env.png">
-  <br>
-</p>
-
-### **2. 아래 명령어로 의존성 패키지들을 설치합니다.**
-```
-$ npm install
-```
-
-### **3. 아래 명령어로 실행시킵니다.**
-
-```
-$ npm run start
+   ┗📄app.tsx
+   ┗📄index.tsx
+   ┗📄Router.tsx
 ```
 
 
