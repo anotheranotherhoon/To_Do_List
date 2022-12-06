@@ -3,11 +3,10 @@ import { useForm } from "react-hook-form";
 import { signIn } from "../api/auth";
 import type { IAuth, IAuthProps } from "../type/types"; 
 
-
-const SignIn = ({ isSignInMode, handleChangeMode, hadleModalOpen }: IAuthProps) => {
-  const { register, handleSubmit, watch,getValues } = useForm<IAuth>()
+const SignIn = ({ isSignInMode, handleChangeMode, handleModalOpen }: IAuthProps) => {
+  const { register, handleSubmit,getValues } = useForm<IAuth>()
   const handleSignIn = (data: IAuth) => {
-    signIn(data, hadleModalOpen)
+    signIn(data, handleModalOpen)
   }
   const handleEnterPress = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter') {

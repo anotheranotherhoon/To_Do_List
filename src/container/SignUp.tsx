@@ -3,15 +3,14 @@ import { ChangeMode, InputWrapper, SubmitBtn, FormContainer } from "./style"
 import { useForm } from "react-hook-form";
 import { IAuthProps,ISignUpAuth } from '../type/types';
 
-const SignUp = ({ isSignInMode, handleChangeMode, hadleModalOpen }: IAuthProps) => {
-
+const SignUp = ({ isSignInMode, handleChangeMode, handleModalOpen }: IAuthProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<ISignUpAuth>()
   console.log(errors?.password?.message)
   const handleSignUp = (data: ISignUpAuth) => {
     signUp({
       email: data.email,
       password: data.password,
-    }, hadleModalOpen,
+    }, handleModalOpen,
       handleChangeMode
     )
   }
