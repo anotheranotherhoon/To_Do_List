@@ -1,4 +1,5 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import DarkdModeHandler from '../components/DarkModeHandler'
 import Layout from '../components/Layout'
 import ModalAlert from '../components/ModalAlert'
 import SignIn from '../container/SignIn'
@@ -17,7 +18,7 @@ const HomePage = () => {
     }
   }
 
-  const hadleModalOpen = (message : string)  => {
+  const hadleModalOpen = (message: string) => {
     setModalMessage(message)
     setIsModalOpen(true)
   }
@@ -28,14 +29,16 @@ const HomePage = () => {
 
   return (
     <Layout>
-        {isSignInMode === '로그인' ? (
-          <SignIn isSignInMode={isSignInMode} handleChangeMode={handleChangeMode} hadleModalOpen={hadleModalOpen} />
-        ) : (
-          <SignUp isSignInMode={isSignInMode} handleChangeMode={handleChangeMode}  hadleModalOpen={hadleModalOpen} />
-        )}
+      <DarkdModeHandler />
+      {isSignInMode === '로그인' ? (
+        <SignIn isSignInMode={isSignInMode} handleChangeMode={handleChangeMode} hadleModalOpen={hadleModalOpen} />
+      ) : (
+        <SignUp isSignInMode={isSignInMode} handleChangeMode={handleChangeMode} hadleModalOpen={hadleModalOpen} />
+      )}
       {isModalOpen ? <ModalAlert rightBtnClick={handleModalClose} rightBtnMessage='확인'>{modalMessage}</ModalAlert> : <></>}
     </Layout>
   )
 }
+
 
 export default HomePage
