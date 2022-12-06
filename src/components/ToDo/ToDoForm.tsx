@@ -5,16 +5,13 @@ import AddBtn from '../../assets/svg/AddBtn'
 import ModalAlert from '../ModalAlert'
 import {useQueryClient, useMutation} from '@tanstack/react-query';
 import { useForm } from "react-hook-form";
-
-interface  ITodo{
-  todo : string;
-}
+import type { ITodoParam } from '../../type/types' 
 
 const ToDoForm = () => {
   const [modalMessage, setModalMessage] = useState('')
   const [isModalOpen, setIsModalOpen] = useState<string>('no')
   const queryClient = useQueryClient()
-  const { register, watch, getValues, setValue } = useForm<ITodo>()
+  const { register, getValues, setValue } = useForm<ITodoParam>()
 
   const validateToDoInput = (toDoContent : string)  => {
     return toDoContent.replace(/ /g, "").length >= 1;
@@ -53,7 +50,7 @@ const ToDoForm = () => {
   const {mutate} = useMutation(handleCreate,{
     onSuccess : () => queryClient.invalidateQueries(['todos'])
   })
-  console.log(watch())
+  
   return(
     <FormWrapper>
     <InputWrapper>
@@ -76,6 +73,9 @@ const InputWrapper = styled.div`
   display: flex;
   input {
     width: 90%;
+    background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-white)' : 'var(--color-navy)'};
+    color : ${(props)=>props.theme.theme==='light' ? 'var(--color-black)' : 'var(--color-gray)'};
+    border:${(props)=>props.theme.theme==='light' ? '1px solid var(--color-black)' : 'none'};
   }
   div {
     margin-left: auto;

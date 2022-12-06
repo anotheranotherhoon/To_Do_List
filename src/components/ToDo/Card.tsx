@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components";
 import Check from '../../assets/svg/Check';
 import Circle from '../../assets/svg/Circle'
@@ -6,18 +6,20 @@ import ModalAlert from '../ModalAlert';
 import Modal from '../Modal'
 import { updateTodo,deleteTodo } from '../../api/todo';
 import {useQueryClient, useMutation} from '@tanstack/react-query';
+import type { ITodo, ILayout } from '../../type/types';
 
-const Card = ({ id, todo, isCompleted, userId } : any) => {
-  const [isEditMode, setIsEditMode] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isEditModalOpen, setIsEditModalOpen] = useState(0)
-  const [editModalMessage, setEditModalMessage] = useState('')
-  const [toDoContent, setToDoContent] = useState(todo)
-  const [toDoIsCompleted, setToDoIsCompleted] = useState(isCompleted)
+
+const Card = ({ id, todo, isCompleted, userId } : ITodo) => {
+  const [isEditMode, setIsEditMode] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<Boolean>(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState<number>(0)
+  const [editModalMessage, setEditModalMessage] = useState<string>('')
+  const [toDoContent, setToDoContent] = useState<string>(todo)
+  const [toDoIsCompleted, setToDoIsCompleted] = useState<boolean>(isCompleted)
   const queryClient = useQueryClient()
 
 
-  const editToDo = (e : any) => {
+  const editToDo = (e : React.ChangeEvent<HTMLInputElement>) => {
     setToDoContent(e.target.value)
   }
   const handleUpdateTodo = async() => {
@@ -25,7 +27,7 @@ const Card = ({ id, todo, isCompleted, userId } : any) => {
     setIsEditMode(false)
     modalClose()
   }
-  const handleDeleteTodo = async(id : any) => {
+  const handleDeleteTodo = async(id : number) => {
     await deleteTodo(id)
     modalClose()
   }
@@ -47,7 +49,7 @@ const Card = ({ id, todo, isCompleted, userId } : any) => {
     setIsEditModalOpen(0)
     setIsModalOpen(false)
   }
-  const handleEditModalOpen = (option:any, message:any) => {
+  const handleEditModalOpen = (option:number, message:string) => {
     setEditModalMessage(message)
     setIsEditModalOpen(option)
   }
@@ -97,10 +99,8 @@ const Card = ({ id, todo, isCompleted, userId } : any) => {
     </Layout>
   )
 }
-interface ILayout {
-  isCompleted : boolean, 
-  isEditMode : boolean
-}
+
+
 
 const Layout = styled.div<ILayout>`
   display: flex;
@@ -111,16 +111,28 @@ const Layout = styled.div<ILayout>`
   margin: 2% 0;
   padding: 2%;
   background-color: ${(props : ILayout)  =>
+  props.theme.theme === 'light' ? (
     props.isCompleted
       ? props.isEditMode
         ? 'var(--color-yellow)'
         : 'var(--color-mauve)'
       : props.isEditMode
         ? 'var(--color-yellow)'
-        : 'white'};
+        : 'var(--color-white)'
+  ) : (
+    props.isCompleted
+      ? props.isEditMode
+        ? 'var(--color-yellow)'
+        : 'var(--color-black)'
+      : props.isEditMode
+        ? 'var(--color-olive)'
+        : 'var(--color-navy)'
+  )
+        };
+
   border-radius: 2rem;
   transition: all ease 0.5s 0.5s;
-  border: ${(props : ILayout) => (props.isEditMode ? '3px solid var(--color-orange)' : 'none')};
+  border: ${(props : ILayout) => props.theme.theme==='light' ?(props.isEditMode ? '3px solid var(--color-orange)' : 'none') : (props.isEditMode ? '3px solid var(--color-green)' : 'none')};
   .content {
     overflow: hidden;
     text-overflow: ellipsis;

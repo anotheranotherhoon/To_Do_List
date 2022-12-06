@@ -1,12 +1,12 @@
-import {useRef} from 'react'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
+import type { IModalAlert } from '../type/types'
 
-
-const ModalAlert = (props : any) => {
+const ModalAlert = ({children, leftBtnMessage, rightBtnMessage,leftBtnClick, rightBtnClick} : IModalAlert) => {
   const modalRef = useRef(null)
-  const cllickBackground = (e : any) => {
+  const cllickBackground = (e : React.MouseEvent) => {
     if (modalRef.current === e.target) {
-      props.rightBtnClick()
+      rightBtnClick?.()
     }
   }
 
@@ -14,9 +14,9 @@ const ModalAlert = (props : any) => {
     <Container>
       <Background ref={modalRef} onClick={cllickBackground} />
       <ModalBlock>
-        <span>{props.children}</span>
-        <Btn className='yes' onClick={()=>props.leftBtnClick()}>{props.leftBtnMessage}</Btn>
-        <Btn  className='cancel' onClick={()=>props.rightBtnClick()}>{props.rightBtnMessage}</Btn>
+        <span>{children}</span>
+        <Btn className='yes' onClick={()=>leftBtnClick?.()}>{leftBtnMessage}</Btn>
+        <Btn  className='cancel' onClick={()=>rightBtnClick?.()}>{rightBtnMessage}</Btn>
       </ModalBlock>
     </Container>
   )
@@ -66,7 +66,7 @@ const ModalBlock = styled.div`
   top: 6.5rem;
   border-radius: 10px;
   padding: 1.5rem;
-  background-color: var(--color-blue);
+  background-color: ${(props)=>props.theme.theme ==='light' ? 'var(--color-blue)' : 'var(--color-black)'};
   color: var(--color-white);
   width: 30rem;
   min-height: 9rem;
@@ -90,17 +90,17 @@ const Btn = styled.div`
   position: absolute;
   bottom: 1rem;
   padding: 1rem;
-  color:var(--color-white);
+  color:${(props)=>props.theme.theme==='light'  ?'var(--color-white)':  'var(--color-gray)'};
   transition: all ease 0.2s 0.2s;
   cursor: pointer;
   &.yes{
   right: 9rem;
-  background-color: var(--color-blue);
+  background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-black)'};
   border-radius: 2rem;
   }
   &.cancel{
   right: 1rem;
-  background-color: var(--color-blue);
+  background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-black)'};
   border-radius: 2rem;
   }
 `

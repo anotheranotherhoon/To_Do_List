@@ -1,12 +1,10 @@
 import { getToken } from '../utils/localeStorage';
 import axiosInstance from './axiosInstance';
+import type { ITodoParam } from '../type/types';
 
-interface ITodo {
-  todo : string
-}
 const token = getToken()
 
-export const createTodo = async(todo : ITodo)=> {
+export const createTodo = async(todo : ITodoParam)=> {
   await axiosInstance.post('/todos', todo,{
     headers : {
       Authorization : `Bearer ${token}`
@@ -25,7 +23,7 @@ export const getTodos = async () => {
   return todos
 };
 
-export const updateTodo = async (id:number, todo:ITodo, isCompleted:boolean, userId:number) => {
+export const updateTodo = async (id:number, todo:string, isCompleted:boolean, userId:number) => {
   try {
     await axiosInstance.put(`todos/${id}`, {
       id,

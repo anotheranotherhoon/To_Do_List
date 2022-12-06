@@ -1,9 +1,10 @@
-import  {useRef} from 'react'
+import  React, {useRef} from 'react'
 import styled from 'styled-components'
+import type { IModal } from '../type/types'
 
-const Modal = ({modalClose, todo, editToDo,handleCancelEditMode,isCompleted, handleComplete} : any) => {
+const Modal = ({modalClose, todo, editToDo,handleCancelEditMode,isCompleted, handleComplete} : IModal) => {
   const modalRef = useRef(null)
-  const cllickBackground = (e : any) => {
+  const cllickBackground = (e :React.MouseEvent<HTMLDivElement>) => {
     if(modalRef.current === e.target){
       modalClose()
     }
@@ -60,7 +61,7 @@ const ModalBlock = styled.div`
     top: 6.5rem;
     border-radius: 10px;
     padding: 1.5rem;
-    background-color: var(--color-yellow);
+    background-color: ${(props)=>props.theme.theme ==='light' ? 'var(--color-yellow)' : 'var(--color-black)'};
     width: 60rem;
     @media (max-width: 1120px) {
         width: 50rem;
@@ -96,19 +97,19 @@ const ModalEvent = styled.div`
     &.done{
       cursor: pointer;
       right:18rem;
-      background-color:var(--color-blue );
+      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
     &.cancel{
       cursor: pointer;
       right:10rem;
-      background-color:var(--color-orange);
+      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-orange)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
     &.ok{
       cursor: pointer;
       right: 2rem;
-      background-color:var(--color-orange);
+      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-orange)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
 `
@@ -122,6 +123,10 @@ const Contents = styled.div`
       margin: 2%;
       width:100%;
       height:5rem;
+      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-white)' : 'var(--color-navy)'};
+      color : ${(props)=>props.theme.theme==='light' ? 'var(--color-black)' : 'var(--color-gray)'};
+      border:none;
+      
     }
 `;
 
