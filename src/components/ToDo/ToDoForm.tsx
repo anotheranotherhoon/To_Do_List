@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { createTodo } from '../../api/todo'
 import AddBtn from '../../assets/svg/AddBtn'
@@ -6,31 +6,22 @@ import ModalAlert from '../ModalAlert'
 import {useQueryClient, useMutation} from '@tanstack/react-query';
 import { useForm } from "react-hook-form";
 import type { ITodoParam } from '../../type/types' 
+import { useModal } from '../../hook/useModal'
+import { validateToDoInput } from '../../utils/regex'
 
 const ToDoForm = () => {
-  const [modalMessage, setModalMessage] = useState('')
-  const [isModalOpen, setIsModalOpen] = useState<string>('no')
+  const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal() 
   const queryClient = useQueryClient()
   const { register, getValues, setValue } = useForm<ITodoParam>()
 
-  const validateToDoInput = (toDoContent : string)  => {
-    return toDoContent.replace(/ /g, "").length >= 1;
-  }
-
   const handleCreateModalOpen = () => {
     if (validateToDoInput(getValues().todo)) {
-      handleModalOpen('submit', '할일을 추가하시겠습니까?')
+      handleModalOpen( '할일을 추가하시겠습니까?', 'submit')
     } else {
-      handleModalOpen('empty', '할일을 입력해주세요!')
+      handleModalOpen( '할일을 입력해주세요!', 'empty')
     }
   }
-  const handleModalOpen = (option : string, message : string) => {
-    setModalMessage(message)
-    setIsModalOpen(option)
-  }
-  const handleModalClose = () => {
-    setIsModalOpen('no')
-  }
+
   const handleEnterPress = (e : React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter') {
       handleCreateModalOpen()

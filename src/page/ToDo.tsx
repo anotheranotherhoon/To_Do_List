@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 import { useQuery } from "@tanstack/react-query"
 import { getTodos } from "../api/todo"
@@ -11,29 +10,16 @@ import InfoScreen from '../components/InfoScreen/InfoScreen';
 import DarkdModeHandler from '../components/DarkModeHandler'
 import Header from '../components/ToDo/Header'
 import type { ITodo } from '../type/types'
-
+import { useModal } from '../hook/useModal'
+import { handleLogOut } from '../utils/localeStorage'
+import { useFilter } from '../hook/useFilter'
 const ToDo = () => {
-  const [isModalOpen, setIsModalOpen] = useState<number>(0)
-  const [modalMessage, setModalMessage] = useState<string>('')
-  const [filterState, setFilterState] = useState<string>('all')
+  const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal()
+  const {filterState, handleFilter}= useFilter()
   const { data, isLoading, isError } = useQuery(
     ['todos'], getTodos
   )
 
-  const handleModalOpen = (option: number, message: string) => {
-    setModalMessage(message)
-    setIsModalOpen(option)
-  }
-  const handleLogOut = () => {
-    window.localStorage.removeItem('token')
-    window.location.reload()
-  }
-  const handleModalClose = () => {
-    setIsModalOpen(0)
-  }
-  const handleFilter = (filter : string) => {
-    setFilterState(filter)
-  }
 
   return (
     <Layout>
@@ -49,7 +35,7 @@ const ToDo = () => {
         {data && filterState === 'done' &&  data.filter((el : ITodo)=>el.isCompleted===true).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
         {data && filterState === 'notYet' &&  data.filter((el : ITodo)=>el.isCompleted===false).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />) }
       </Container>
-      {isModalOpen === 1 ? <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
+      {isModalOpen === 'logout' ? <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
     </Layout>
   )
 
