@@ -1,9 +1,6 @@
 import styled from 'styled-components'
+import type { IFilter, IStyledFilter } from '../../type/types'
 
-interface IFilter {
-  filterState : string;
-  handleFilter(state : string) : void
-}
 const Filter = ({filterState, handleFilter} : IFilter) => {
   return(
     <FilterWrapper>
@@ -22,15 +19,16 @@ const FilterWrapper = styled.div`
   font-size: 150%;
   transition : all ease 0.3s 0.3s;
 `
-interface IFilterProps {
-  state : string;
-  current : string
-}
-const FilterDiv = styled.div<IFilterProps>`
+const FilterDiv = styled.div<IStyledFilter>`
     cursor: pointer;
     padding:1rem;
-    background-color : ${(props) => props.state === props.current ? 'var(--color-mauve)' : 'var(--color-blue )'};
-    color: ${(props) => props.state === props.current ? 'var(--color-black)' : 'var(--color-white)'};
+    background-color : ${(props) => 
+    props.theme.theme==='light' ?     props.state === props.current ? 'var(--color-mauve)' : 'var(--color-blue )'
+    :
+    props.state === props.current ? 'var(--color-mauve)' : 'var(--color-navy )'
+  };
+    color: ${(props) => props.theme.theme==='light' ? props.state === props.current ? 'var(--color-black)' : 'var(--color-white)' : props.state === props.current ? 'var(--color-black)' : 'var(--color-darkModeColor)'
+  };
     border-radius: 1rem;
     margin-right: 1%;
     :hover{
