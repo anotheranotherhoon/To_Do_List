@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { DarkModeHook } from '../hook/DarkModeHook'
+import { useDarkMode } from '../hook/useDarkMode'
 import Day from '../assets/svg/Day'
 import Night from '../assets/svg/Night'
 
 const DarkdModeHandler = () => {
-  const { handleThemeChange, themeState } = DarkModeHook()
+  const { handleThemeChange, themeState } = useDarkMode()
   return(
     <DarkMode onClick={handleThemeChange}>
     {themeState === 'light' ?

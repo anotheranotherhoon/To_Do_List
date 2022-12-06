@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil'
 import {theme} from '../recoil/darkMode'
 
-export const DarkModeHook = () => {
+export const useDarkMode = () => {
   const [currentTheme, setCurrentTheme] = useRecoilState(theme)
   const themeState = currentTheme.theme
   const handleThemeChange = () : void => {
