@@ -57,16 +57,21 @@ const Background = styled.div`
 `;
 
 const ModalBlock = styled.div`
-    position: absolute;
+    position: fixed;
     top: 6.5rem;
     border-radius: 10px;
     padding: 1.5rem;
     background-color: ${(props)=>props.theme.theme ==='light' ? 'var(--color-yellow)' : 'var(--color-black)'};
     width: 60rem;
-    @media (max-width: 1120px) {
+    @media screen and (max-width: 1120px) {
         width: 50rem;
     }
-    @media (max-width: 50rem) {
+    @media screen and (max-width: 413px) {
+    max-width: 38rem;
+    font-size: 50%;
+    top:40rem;
+  }
+    @media screen and  (max-width: 50rem) {
         width: 80%;
     }
     min-height: 18rem;

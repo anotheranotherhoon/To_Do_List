@@ -5,22 +5,25 @@ import Night from '../assets/svg/Night'
 
 const DarkdModeHandler = () => {
   const { handleThemeChange, themeState } = useDarkMode()
-  return(
+  return (
     <DarkMode onClick={handleThemeChange}>
-    {themeState === 'light' ?
-      <Night />
-      :
-      <Day />
-    }
-  </DarkMode>
+      {themeState === 'light' ?
+        <Night />
+        :
+        <Day />
+      }
+    </DarkMode>
   )
 }
 
 const DarkMode = styled.div`
-  position : absolute;
-  bottom:10%;
-  right:10%;
-
+  position : fixed;
+  top:10%;
+  left:20%;
+  @media screen and (max-width: 413px) {
+    top:10%;
+    left:4%;
+  }
 `
 
 export default DarkdModeHandler
