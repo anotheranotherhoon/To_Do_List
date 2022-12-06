@@ -18,7 +18,7 @@ const HomePage = () => {
       ) : (
         <SignUp isSignInMode={isSignInMode} handleChangeMode={handleChangeMode} handleModalOpen={handleModalOpen} />
       )}
-      {isModalOpen ? <ModalAlert rightBtnClick={handleModalClose} rightBtnMessage='확인'>{modalMessage}</ModalAlert> : <></>}
+      {isModalOpen && <ModalAlert rightBtnClick={handleModalClose} rightBtnMessage='확인'>{modalMessage}</ModalAlert>}
     </Layout>
   )
 }

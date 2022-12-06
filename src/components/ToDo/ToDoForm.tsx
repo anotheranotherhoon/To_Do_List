@@ -51,8 +51,8 @@ const ToDoForm = () => {
         <AddBtn />
       </div>
     </InputWrapper>
-    {isModalOpen === 'empty' ? <ModalAlert rightBtnClick={handleModalClose} rightBtnMessage='확인' >{modalMessage}</ModalAlert> : <></>}
-    {isModalOpen === 'submit' ? <ModalAlert leftBtnClick={mutate} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
+    {isModalOpen === 'empty' && <ModalAlert rightBtnClick={handleModalClose} rightBtnMessage='확인' >{modalMessage}</ModalAlert>}
+    {isModalOpen === 'submit' && <ModalAlert leftBtnClick={mutate} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert>}
   </FormWrapper>
   )
 }

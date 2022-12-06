@@ -38,7 +38,7 @@ const ToDo = () => {
         {data && filterState === 'notYet' && data.filter((el: ITodo) => el.isCompleted === false).map((todo: ITodo) => 
         <Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
       </Container>
-      {isModalOpen === 'logout' ? <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
+      {isModalOpen === 'logout'  && <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert>}
     </Layout>
   )
 
