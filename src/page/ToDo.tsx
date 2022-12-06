@@ -14,8 +14,8 @@ import { useModal } from '../hook/useModal'
 import { handleLogOut } from '../utils/localeStorage'
 import { useFilter } from '../hook/useFilter'
 const ToDo = () => {
-  const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal()
-  const {filterState, handleFilter}= useFilter()
+  const { isModalOpen, modalMessage, handleModalOpen, handleModalClose } = useModal()
+  const { filterState, handleFilter } = useFilter()
   const { data, isLoading, isError } = useQuery(
     ['todos'], getTodos
   )
@@ -25,15 +25,18 @@ const ToDo = () => {
     <Layout>
       <DarkdModeHandler />
       <Container>
-        <Header handleModalOpen={handleModalOpen}/>
+        <Header handleModalOpen={handleModalOpen} />
         <ToDoForm />
-        <Filter filterState={filterState}  handleFilter={handleFilter}/>
+        <Filter filterState={filterState} handleFilter={handleFilter} />
         {isLoading && <InfoScreen status='loading' />}
-        {isError && <InfoScreen status='error'/>}
-        {data && filterState === 'all' &&  data?.map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)
+        {isError && <InfoScreen status='error' />}
+        {data && filterState === 'all' && data?.map((todo: ITodo) => 
+        <Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)
         }
-        {data && filterState === 'done' &&  data.filter((el : ITodo)=>el.isCompleted===true).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
-        {data && filterState === 'notYet' &&  data.filter((el : ITodo)=>el.isCompleted===false).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />) }
+        {data && filterState === 'done' && data.filter((el: ITodo) => el.isCompleted === true).map((todo: ITodo) => 
+        <Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
+        {data && filterState === 'notYet' && data.filter((el: ITodo) => el.isCompleted === false).map((todo: ITodo) => 
+        <Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
       </Container>
       {isModalOpen === 'logout' ? <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
     </Layout>
