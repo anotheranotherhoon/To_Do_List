@@ -7,6 +7,10 @@ import ToDoForm from '../components/ToDo/ToDoForm'
 import Filter from '../components/ToDo/Filter'
 import Card from '../components/ToDo/Card'
 import ModalAlert from '../components/ModalAlert'
+import InfoScreen from '../components/InfoScreen/InfoScreen';
+import DarkdModeHandler from '../components/DarkModeHandler'
+import Header from '../components/ToDo/Header'
+import type { ITodo } from '../type/types'
 
 const ToDo = () => {
   const [isModalOpen, setIsModalOpen] = useState<number>(0)
@@ -16,7 +20,7 @@ const ToDo = () => {
     ['todos'], getTodos
   )
 
-  const handleModalOpen = (option: any, message: any) => {
+  const handleModalOpen = (option: number, message: string) => {
     setModalMessage(message)
     setIsModalOpen(option)
   }
@@ -33,19 +37,17 @@ const ToDo = () => {
 
   return (
     <Layout>
+      <DarkdModeHandler />
       <Container>
-        <Wrapper>
-          <h1>To Do List</h1>
-          <LogOut>
-            <span className='btnName' onClick={() => handleModalOpen(1, '로그아웃 하시겠습니까?')}>로그아웃</span>
-          </LogOut>
-        </Wrapper>
+        <Header handleModalOpen={handleModalOpen}/>
         <ToDoForm />
         <Filter filterState={filterState}  handleFilter={handleFilter}/>
-        {data && filterState === 'all' &&  data?.map((todo: any) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)
+        {isLoading && <InfoScreen status='loading' />}
+        {isError && <InfoScreen status='error'/>}
+        {data && filterState === 'all' &&  data?.map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)
         }
-        {data && filterState === 'done' &&  data.filter((el : any)=>el.isCompleted===true).map((todo: any) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
-        {data && filterState === 'notYet' &&  data.filter((el : any)=>el.isCompleted===false).map((todo: any) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />) }
+        {data && filterState === 'done' &&  data.filter((el : ITodo)=>el.isCompleted===true).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />)}
+        {data && filterState === 'notYet' &&  data.filter((el : ITodo)=>el.isCompleted===false).map((todo: ITodo) =><Card key={todo.id} id={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} userId={todo.userId} />) }
       </Container>
       {isModalOpen === 1 ? <ModalAlert leftBtnClick={handleLogOut} leftBtnMessage='네' rightBtnClick={handleModalClose} rightBtnMessage='아니오' >{modalMessage}</ModalAlert> : <></>}
     </Layout>
@@ -62,26 +64,7 @@ const Container = styled.div`
     width: 80%;
   }
 `
-const Wrapper = styled.div`
-  display:flex;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 500%;
-  padding-top: 1rem;
-  text-align: center;
-  margin: 4% 0;
-`
-const LogOut = styled.div`
-  text-align: end;
-  .btnName {
-    cursor: pointer;
-    font-size: 25%;
-    background-color: var(--color-blue );
-    border-radius: 1rem;
-    margin-left: auto;
-    padding:1rem ;
-    color: var(--color-white);
-  }
-`
+
+
 
 export default ToDo
