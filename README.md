@@ -24,21 +24,21 @@
 
 ### **✨ 구현 예시**
 
-반응형 및 다크모드
+**1) 반응형 및 다크모드**
 <p align="center">
   <br>
   <img src="./images/responsiveDark.gif">
   <br>
 </p>
 
-모달
+**2) 모달**
 <p align="center">
   <br>
   <img src="./images/modal.gif">
   <br>
 </p>
 
-custom hook으로 모달 상태 관리
+**3) custom hook으로 모달 상태 관리**
 
 <p align="center">
   <br>
@@ -53,6 +53,25 @@ custom hook으로 모달 상태 관리
  ![badge](https://img.shields.io/badge/React-61dafb?logo=React&logoColor=white&style=flat-square)
 ![badge](https://img.shields.io/badge/styled%20components-DB7093?style=flat-square&logo=styled%20components&logoColor=white) ![badge](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white)  ![badge](https://img.shields.io/badge/React%20Query-df5054?style=flat-square&logo=React-Query&logoColor=white)
 ![badge](https://img.shields.io/badge/Recoil-4976e0?style=flat-square&logo=Recoil&logoColor=white)  
+
+## **📝 디렉토리 구조**
+
+```
+   📂src
+   ┗ 📂page
+   ┗ 📂api
+   ┗ 📂components
+   ┗ 📂container
+   ┗ 📂recoil
+   ┗ 📂hook
+   ┗ 📂styles
+   ┗ 📂type
+   ┗ 📂utils
+   ┗ 📂assets
+    ┗📄app.tsx
+    ┗📄index.tsx
+    ┗📄Router.tsx
+```
 
 ## **🖥 프로젝트 실행 방법**
 
