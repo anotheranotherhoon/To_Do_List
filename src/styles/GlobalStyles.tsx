@@ -12,7 +12,11 @@ export const GlobalStyles = createGlobalStyle`
     --color-orange: #FF6C02;
     --color-black : #000000;
     --color-white :#ffffff;
-    
+    --color-darkModeBg : #202026;
+    --color-darkModeColor : gray;
+    --color-navy : #171769;
+    --color-olive : #556b2f;
+    --color-green : #006400;
   }
   html {
     font-size: 62.5%;

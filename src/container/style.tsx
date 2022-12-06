@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export const ChangeMode = styled.button`
   cursor: pointer;
-  background-color: var(--color-mauve);
+  background-color: ${(props)=>props.theme.theme==='light' ?'var(--color-mauve)' : 'var(--color-black)' };
   width: 100%;
-  color: var(--color-black);
+  color: ${(props)=>props.theme.theme==='light' ?'var(--color-black)' : 'var(--color-darkModeColor)' };
   text-align: center;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -40,6 +40,9 @@ export const InputWrapper = styled.div`
   input {
     width: 100%;
     margin-bottom: 5%;
+    background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-white)' : 'var(--color-navy)'};
+    color : ${(props)=>props.theme.theme==='light' ? 'var(--color-black)' : 'var(--color-gray)'};
+    border:${(props)=>props.theme.theme==='light' ? '1px solid var(--color-black)' : 'none'};
   }
   span {
     font-size: 1.3rem;
@@ -48,9 +51,9 @@ export const InputWrapper = styled.div`
 `
 
 export const SubmitBtn = styled.button`
-  background-color: ${(props)=>props.disabled ? '#dedede' : '#0651f5'};
+  background-color: ${(props)=>props.theme.theme==='light' ?'var(--color-blue)' : 'var(--color-black)' };
   width: 100%;
-  color: var(--color-white);
+  color: ${(props)=>props.theme.theme==='light' ?'var(--color-black)' : 'var(--color-darkModeColor)' };
   border:none;
   text-align: center;
   padding: 1rem;
