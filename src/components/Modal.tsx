@@ -69,7 +69,7 @@ const ModalBlock = styled.div`
     }
     @media screen and (max-width: 413px) {
     max-width: 38rem;
-    top:40rem;
+    top:15rem;
   }
     @media screen and  (max-width: 50rem) {
         width: 80%;
