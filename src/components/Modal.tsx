@@ -1,11 +1,11 @@
-import  React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import type { IModal } from '../type/types'
 
-const Modal = ({modalClose, todo, editToDo,handleCancelEditMode,isCompleted, handleComplete} : IModal) => {
+const Modal = ({ modalClose, todo, editToDo, handleCancelEditMode, isCompleted, handleComplete }: IModal) => {
   const modalRef = useRef(null)
-  const cllickBackground = (e :React.MouseEvent<HTMLDivElement>) => {
-    if(modalRef.current === e.target){
+  const cllickBackground = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current === e.target) {
       modalClose()
     }
   }
@@ -19,14 +19,15 @@ const Modal = ({modalClose, todo, editToDo,handleCancelEditMode,isCompleted, han
           <label>수정 하기</label>
           <input value={todo} onChange={editToDo} />
         </Contents>
-        {isCompleted ? <ModalEvent className='done' onClick={()=>handleComplete()}>Not yet</ModalEvent> :<ModalEvent className='done' onClick={()=>handleComplete()}>Done!</ModalEvent>}
-        <ModalEvent className='cancel' onClick={()=>handleCancelEditMode()}>취소</ModalEvent>
-        <ModalEvent className='ok' onClick={()=>modalClose()}>확인</ModalEvent>
+        {isCompleted ? <ModalEvent className='done' onClick={() => handleComplete()}>Not yet</ModalEvent> : <ModalEvent className='done' onClick={() => handleComplete()}>Done!</ModalEvent>}
+        <ModalEvent className='cancel' onClick={() => handleCancelEditMode()}>취소</ModalEvent>
+        <ModalEvent className='ok' onClick={() => modalClose()}>확인</ModalEvent>
       </ModalBlock>
     </Container>
   )
 }
 const Container = styled.div`
+    font-size: 2rem;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -61,14 +62,13 @@ const ModalBlock = styled.div`
     top: 6.5rem;
     border-radius: 10px;
     padding: 1.5rem;
-    background-color: ${(props)=>props.theme.theme ==='light' ? 'var(--color-yellow)' : 'var(--color-black)'};
+    background-color: ${(props) => props.theme.theme === 'light' ? 'var(--color-yellow)' : 'var(--color-black)'};
     width: 60rem;
     @media screen and (max-width: 1120px) {
         width: 50rem;
     }
     @media screen and (max-width: 413px) {
     max-width: 38rem;
-    font-size: 50%;
     top:40rem;
   }
     @media screen and  (max-width: 50rem) {
@@ -102,21 +102,35 @@ const ModalEvent = styled.div`
     &.done{
       cursor: pointer;
       right:18rem;
-      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-navy)'};
+      background-color:${(props) => props.theme.theme === 'light' ? 'var(--color-blue)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
     &.cancel{
       cursor: pointer;
       right:10rem;
-      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-orange)' : 'var(--color-navy)'};
+      background-color:${(props) => props.theme.theme === 'light' ? 'var(--color-orange)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
     &.ok{
       cursor: pointer;
       right: 2rem;
-      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-orange)' : 'var(--color-navy)'};
+      background-color:${(props) => props.theme.theme === 'light' ? 'var(--color-orange)' : 'var(--color-navy)'};
       border-radius: 2rem;
     }
+    @media screen and (max-width: 413px) {
+      &.done{
+      cursor: pointer;
+      right:14rem;
+      background-color:${(props) => props.theme.theme === 'light' ? 'var(--color-blue)' : 'var(--color-navy)'};
+      border-radius: 2rem;
+      }
+      &.cancel{
+      right: 8rem;
+      }
+      &.ok{
+      right: 2rem;
+      }
+  }
 `
 
 
@@ -128,11 +142,16 @@ const Contents = styled.div`
       margin: 2%;
       width:100%;
       height:5rem;
-      background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-white)' : 'var(--color-navy)'};
-      color : ${(props)=>props.theme.theme==='light' ? 'var(--color-black)' : 'var(--color-gray)'};
+      background-color:${(props) => props.theme.theme === 'light' ? 'var(--color-white)' : 'var(--color-navy)'};
+      color : ${(props) => props.theme.theme === 'light' ? 'var(--color-black)' : 'var(--color-gray)'};
       border:none;
-      
     }
+    @media screen and (max-width: 413px) {
+      margin: 8% 0;
+      label{
+        margin-bottom: 3%;
+      }
+  }
 `;
 
 

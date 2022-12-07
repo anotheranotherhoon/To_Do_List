@@ -71,6 +71,9 @@ const ModalBlock = styled.div`
   width: 30rem;
   min-height: 9rem;
   animation: modal-show 0.3s;
+  @media screen and (max-width: 413px) {
+    top:40rem;
+  }
   span{
     margin-bottom: 8%;
   }
@@ -103,6 +106,7 @@ const Btn = styled.div`
   background-color:${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-black)'};
   border-radius: 2rem;
   }
+
 `
 
 export default ModalAlert
