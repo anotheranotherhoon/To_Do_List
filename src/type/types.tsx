@@ -1,8 +1,16 @@
+// import { UseMutateFunction } from "@tanstack/react-query";
+// import { AxiosError } from "axios";
+
 export interface ITodo {
   id:number;
   todo : string;
   isCompleted : boolean;
   userId : number;
+}
+
+export interface IEditMode {
+  todo : string;
+  isCompleted : boolean
 }
 
 export interface ITodoParam{
@@ -44,6 +52,7 @@ export interface IModalAlert {
   leftBtnMessage ?: string;
   rightBtnMessage? : string,
   leftBtnClick ?: () =>void ,
+  // leftBtnClick : UseMutateFunction<ITodo, AxiosError, ITodo, unknown> | () => void,
   rightBtnClick ?: ()=>void,
 }
 
