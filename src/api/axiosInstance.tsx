@@ -3,7 +3,7 @@ import axios, {AxiosRequestConfig} from 'axios';
 
 const axiosConfig: AxiosRequestConfig<any> = {
   baseURL: process.env.REACT_APP_URL,
-  timeout: 30_000,
+  timeout: 30000,
   headers : {
     'Content-Type': 'application/json',
   }
