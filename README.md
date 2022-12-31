@@ -2,7 +2,7 @@
 
 ### [배포 바로가기](https://to-do-list-delta-brown.vercel.app/)
 
-### 로그인 ID / PASSWORD
+### 로그인 이메일// 비밀번호
 
 ### `1234@1234.com` // `12341234`
 
@@ -22,7 +22,7 @@
 - alert사용을 지양하고 modal을 만들어 사용하였습니다. 
 
 
-### **✨ 구현 예시**
+### **🏊 구현 예시**
 
 **1) 반응형 및 다크모드**
 <p align="center">
@@ -53,7 +53,6 @@
  ![badge](https://img.shields.io/badge/React-61dafb?logo=React&logoColor=white&style=flat-square)
 ![badge](https://img.shields.io/badge/styled%20components-DB7093?style=flat-square&logo=styled%20components&logoColor=white) ![badge](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white)  ![badge](https://img.shields.io/badge/React%20Query-df5054?style=flat-square&logo=React-Query&logoColor=white)
 ![badge](https://img.shields.io/badge/Recoil-4976e0?style=flat-square&logo=Recoil&logoColor=white)  
-
 ## **🖥 프로젝트 실행 방법**
 
 ### **1. root 경로에 .env 파일 생성 후 환경변수 설정**
