@@ -53,7 +53,7 @@ export const InputWrapper = styled.div`
 export const SubmitBtn = styled.button`
   background-color: ${(props)=>props.theme.theme==='light' ?'var(--color-blue)' : 'var(--color-black)' };
   width: 100%;
-  color: ${(props)=>props.theme.theme==='light' ?'var(--color-black)' : 'var(--color-darkModeColor)' };
+  color: ${(props)=>props.theme.theme==='light' ?'var(--color-white)' : 'var(--color-darkModeColor)' };
   border:none;
   text-align: center;
   padding: 1rem;

@@ -13,7 +13,7 @@ const ToDoForm = () => {
   const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal() 
   const queryClient = useQueryClient()
   const { register, getValues, setValue } = useForm<ITodoParam>()
-
+  
   const handleCreateModalOpen = () => {
     if (validateToDoInput(getValues().todo)) {
       handleModalOpen( '할일을 추가하시겠습니까?', 'submit')

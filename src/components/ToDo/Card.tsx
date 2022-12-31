@@ -12,7 +12,7 @@ import { useEditMode } from '../../hook/useEditMode';
 
 const Card = ({ id, todo, isCompleted, userId } : ITodo) => {
   const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal()
-  const {isEditMode, isEditModalOpen,toDoContent,toDoIsCompleted,editToDo,setIsEditMode, handleEditBtn,handleCancelEditMode, handleComplete, handleCloseEditModal} = useEditMode({id, todo, isCompleted, userId})
+  const {isEditMode, isEditModalOpen,toDoContent,toDoIsCompleted,editToDo,setIsEditMode, handleEditBtn,handleCancelEditMode, handleComplete, handleCloseEditModal} = useEditMode({todo, isCompleted})
   const queryClient = useQueryClient()
   const handleUpdateTodo = async() => {
     await updateTodo(id, toDoContent, toDoIsCompleted, userId)

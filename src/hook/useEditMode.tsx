@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { ITodo } from "../type/types"
-
-export const useEditMode = ({id, todo, isCompleted, userId } : ITodo) => {
+import { IEditMode } from "../type/types"
+export const useEditMode = ({todo, isCompleted } : IEditMode) => {
   const [toDoContent, setToDoContent] = useState<string>(todo)
   const [toDoIsCompleted, setToDoIsCompleted] = useState<boolean>(isCompleted)
   const [isEditMode, setIsEditMode] = useState<boolean>(false)
