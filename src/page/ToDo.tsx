@@ -17,7 +17,9 @@ const ToDo = () => {
   const { isModalOpen, modalMessage, handleModalOpen, handleModalClose } = useModal()
   const { filterState, handleFilter } = useFilter()
   const { data, isLoading, isError } = useQuery(
-    ['todos'], getTodos
+    ['todos'], getTodos,{
+      staleTime: 10000
+    }
   )
 
 
