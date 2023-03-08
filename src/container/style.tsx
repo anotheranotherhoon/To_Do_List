@@ -51,10 +51,12 @@ export const InputWrapper = styled.div`
 `
 
 export const SubmitBtn = styled.button`
+  cursor: pointer;
   background-color: ${(props)=>props.theme.theme==='light' ?'var(--color-blue)' : 'var(--color-black)' };
   width: 100%;
   color: ${(props)=>props.theme.theme==='light' ?'var(--color-white)' : 'var(--color-darkModeColor)' };
   border:none;
+  margin-bottom: 1rem;
   text-align: center;
   padding: 1rem;
   border-radius: 1rem;
