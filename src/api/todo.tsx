@@ -2,9 +2,9 @@ import { getToken } from '../utils/localeStorage';
 import axiosInstance from './axiosInstance';
 import type { ITodoParam } from '../type/types';
 
-const token = getToken()
 
 export const createTodo = async (todo: ITodoParam) => {
+  const token = getToken()
   await axiosInstance.post('/todos', todo, {
     headers: {
       Authorization: `Bearer ${token}`
@@ -14,6 +14,7 @@ export const createTodo = async (todo: ITodoParam) => {
 };
 
 export const getTodos = async () => {
+  const token = getToken()
   const response = await axiosInstance.get('/todos', {
     headers: {
       Authorization: `Bearer ${token}`
@@ -24,6 +25,7 @@ export const getTodos = async () => {
 };
 
 export const updateTodo = async (id: number, todo: string, isCompleted: boolean, userId: number) => {
+  const token = getToken()
   try {
     await axiosInstance.put(`todos/${id}`, {
       id,
@@ -42,6 +44,7 @@ export const updateTodo = async (id: number, todo: string, isCompleted: boolean,
 };
 
 export const deleteTodo = async (id: number) => {
+  const token = getToken()
   try {
     await axiosInstance.delete(`todos/${id}`, {
       headers: {
