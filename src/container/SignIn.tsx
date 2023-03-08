@@ -5,6 +5,13 @@ import type { IAuth, IAuthProps } from "../type/types";
 
 const SignIn = ({ isSignInMode, handleChangeMode, handleModalOpen }: IAuthProps) => {
   const { register, handleSubmit,getValues } = useForm<IAuth>()
+  const gusetLogin = () => {
+    const TEST_ACCOUNT = {
+      email : process.env.REACT_APP_EMAIL as string,
+      password :process.env.REACT_APP_PASSWORD as string
+    }
+    signIn(TEST_ACCOUNT, handleModalOpen)
+  }
   const handleSignIn = (data: IAuth) => {
     signIn(data, handleModalOpen)
   }
@@ -33,8 +40,9 @@ const SignIn = ({ isSignInMode, handleChangeMode, handleModalOpen }: IAuthProps)
           type='password'
         />
       </InputWrapper>
-      <ChangeMode type='button' onClick={() => handleChangeMode()}>회원가입하러가기</ChangeMode>
+      <SubmitBtn type='button' onClick={gusetLogin}>게스트 로그인</SubmitBtn>
       <SubmitBtn >{isSignInMode}</SubmitBtn>
+      <ChangeMode type='button' onClick={() => handleChangeMode()}>회원가입하러가기</ChangeMode>
     </FormContainer>
 
   )
