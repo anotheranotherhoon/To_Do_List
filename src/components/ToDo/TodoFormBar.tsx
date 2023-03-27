@@ -9,7 +9,7 @@ import { validateTodoInput } from '../../utils/regex'
 import { todoAtom } from "../../recoil/todoAtom"
 import { useRecoilState } from "recoil"
 
-const TodoForm = () => {
+const TodoFormBar = () => {
   const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal() 
   const queryClient = useQueryClient()
   const [todoData, setToDoData] = useRecoilState(todoAtom)
@@ -86,4 +86,4 @@ const InputWrapper = styled.div`
   }
 `
 
-export default TodoForm
+export default TodoFormBar

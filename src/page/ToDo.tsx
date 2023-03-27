@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useQuery } from "@tanstack/react-query"
 import { getTodos } from "../api/todo"
 import Layout from "../components/Layout"
-import TodoForm from '../components/Todo/TodoForm'
+import TodoForm from '../components/Todo/TodoFormBar'
 import Filter from '../components/Todo/Filter'
 import Card from '../components/Todo/Card'
 import ModalAlert from '../components/ModalAlert'
