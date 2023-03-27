@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import type { IHeader } from '../../type/types'
+import SpeechBar from "./SpeechBar"
 
 const Header = ({handleModalOpen} : IHeader) => {
   return(
     <Wrapper>
     <h1>To Do List</h1>
+    <SpeechBar/>
     <LogOut>
       <span className='btnName' onClick={() => handleModalOpen('로그아웃 하시겠습니까?','logout')}>로그아웃</span>
     </LogOut>

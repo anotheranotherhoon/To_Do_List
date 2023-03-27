@@ -2,18 +2,18 @@ import styled from 'styled-components'
 import { useQuery } from "@tanstack/react-query"
 import { getTodos } from "../api/todo"
 import Layout from "../components/Layout"
-import ToDoForm from '../components/ToDo/ToDoForm'
-import Filter from '../components/ToDo/Filter'
-import Card from '../components/ToDo/Card'
+import TodoForm from '../components/Todo/TodoForm'
+import Filter from '../components/Todo/Filter'
+import Card from '../components/Todo/Card'
 import ModalAlert from '../components/ModalAlert'
 import InfoScreen from '../components/InfoScreen/InfoScreen';
 import DarkdModeHandler from '../components/DarkModeHandler'
-import Header from '../components/ToDo/Header'
+import Header from '../components/Todo/Header'
 import type { ITodo } from '../type/types'
 import { useModal } from '../hook/useModal'
 import { handleLogOut } from '../utils/localeStorage'
 import { useFilter } from '../hook/useFilter'
-const ToDo = () => {
+const Todo = () => {
   const { isModalOpen, modalMessage, handleModalOpen, handleModalClose } = useModal()
   const { filterState, handleFilter } = useFilter()
   const { data, isLoading, isError } = useQuery(
@@ -28,7 +28,7 @@ const ToDo = () => {
       <DarkdModeHandler />
       <Container>
         <Header handleModalOpen={handleModalOpen} />
-        <ToDoForm />
+        <TodoForm />
         <Filter filterState={filterState} handleFilter={handleFilter} />
         {isLoading && <InfoScreen status='loading' />}
         {isError && <InfoScreen status='error' />}
@@ -58,4 +58,4 @@ const Container = styled.div`
 
 
 
-export default ToDo
+export default Todo

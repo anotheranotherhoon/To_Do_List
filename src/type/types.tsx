@@ -41,7 +41,7 @@ export interface IChildren {
 export interface IModal {
   modalClose : ()=>void;
   todo : string,
-  editToDo(e : React.ChangeEvent<HTMLInputElement>) : void,
+  editTodo(e : React.ChangeEvent<HTMLInputElement>) : void,
   handleCancelEditMode : ()=>void,
   isCompleted : boolean,
   handleComplete : () =>void
@@ -52,7 +52,6 @@ export interface IModalAlert {
   leftBtnMessage ?: string;
   rightBtnMessage? : string,
   leftBtnClick ?: () =>void ,
-  // leftBtnClick : UseMutateFunction<ITodo, AxiosError, ITodo, unknown> | () => void,
   rightBtnClick ?: ()=>void,
 }
 

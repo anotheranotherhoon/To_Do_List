@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import type { IModal } from '../type/types'
 
-const Modal = ({ modalClose, todo, editToDo, handleCancelEditMode, isCompleted, handleComplete }: IModal) => {
+const Modal = ({ modalClose, todo, editTodo, handleCancelEditMode, isCompleted, handleComplete }: IModal) => {
   const modalRef = useRef(null)
   const cllickBackground = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === e.target) {
@@ -17,7 +17,7 @@ const Modal = ({ modalClose, todo, editToDo, handleCancelEditMode, isCompleted, 
       <ModalBlock>
         <Contents>
           <label>수정 하기</label>
-          <input value={todo} onChange={editToDo} />
+          <input value={todo} onChange={editTodo} />
         </Contents>
         {isCompleted ? <ModalEvent className='done' onClick={() => handleComplete()}>Not yet</ModalEvent> : <ModalEvent className='done' onClick={() => handleComplete()}>Done!</ModalEvent>}
         <ModalEvent className='cancel' onClick={() => handleCancelEditMode()}>취소</ModalEvent>

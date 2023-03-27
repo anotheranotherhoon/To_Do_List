@@ -12,10 +12,10 @@ import { useEditMode } from '../../hook/useEditMode';
 
 const Card = ({ id, todo, isCompleted, userId } : ITodo) => {
   const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal()
-  const {isEditMode, isEditModalOpen,toDoContent,toDoIsCompleted,editToDo,setIsEditMode, handleEditBtn,handleCancelEditMode, handleComplete, handleCloseEditModal} = useEditMode({todo, isCompleted})
+  const {isEditMode, isEditModalOpen,todoContent,toDoIsCompleted,editTodo,setIsEditMode, handleEditBtn,handleCancelEditMode, handleComplete, handleCloseEditModal} = useEditMode({todo, isCompleted})
   const queryClient = useQueryClient()
   const handleUpdateTodo = async() => {
-    await updateTodo(id, toDoContent, toDoIsCompleted, userId)
+    await updateTodo(id, todoContent, toDoIsCompleted, userId)
     setIsEditMode(false)
     handleModalClose()
   }
@@ -35,7 +35,7 @@ const Card = ({ id, todo, isCompleted, userId } : ITodo) => {
   return (
     <Layout isCompleted={toDoIsCompleted} isEditMode={isEditMode}>
       <Mark>{toDoIsCompleted ? <Check /> : <Circle />}</Mark>
-      <div className="content">{toDoContent}</div>
+      <div className="content">{todoContent}</div>
       <EventWrapper>
         {isEditMode ? (
           <>
@@ -59,8 +59,8 @@ const Card = ({ id, todo, isCompleted, userId } : ITodo) => {
         {isEditModalOpen && (
           <Modal
             modalClose={handleCloseEditModal}
-            todo={toDoContent}
-            editToDo={editToDo}
+            todo={todoContent}
+            editTodo={editTodo}
             handleCancelEditMode={handleCancelEditMode}
             isCompleted={toDoIsCompleted}
             handleComplete={handleComplete}

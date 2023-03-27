@@ -1,3 +1,3 @@
-export const validateToDoInput = (toDoContent : string)  => {
-  return toDoContent.replace(/ /g, "").length >= 1;
+export const validateTodoInput = (todoContent : string)  => {
+  return todoContent.replace(/ /g, "").length >= 1;
 }
