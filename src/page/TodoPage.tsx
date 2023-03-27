@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { useQuery } from "@tanstack/react-query"
-import { getTodos } from "../api/todo"
+import { getTodos } from "../api/todoAPI"
 import Layout from "../components/Layout"
-import TodoForm from '../components/Todo/TodoForm'
-import Filter from '../components/Todo/Filter'
-import Card from '../components/Todo/Card'
+import Filter from '../components/TodoComponent/Filter'
+import Card from '../components/TodoComponent/Card'
 import ModalAlert from '../components/ModalAlert'
 import InfoScreen from '../components/InfoScreen/InfoScreen';
 import DarkdModeHandler from '../components/DarkModeHandler'
-import Header from '../components/Todo/Header'
+import Header from '../components/TodoComponent/Header'
+import TodoForm from '../components/TodoComponent/TodoForm'
 import type { ITodo } from '../type/types'
 import { useModal } from '../hook/useModal'
 import { handleLogOut } from '../utils/localeStorage'

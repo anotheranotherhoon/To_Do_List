@@ -27,7 +27,7 @@ export const getTodos = async () => {
 export const updateTodo = async (id: number, todo: string, isCompleted: boolean, userId: number) => {
   const token = getToken()
   try {
-    await axiosInstance.put(`todos/${id}`, {
+    await axiosInstance.put(`/todos/${id}`, {
       id,
       todo,
       isCompleted,
@@ -46,7 +46,7 @@ export const updateTodo = async (id: number, todo: string, isCompleted: boolean,
 export const deleteTodo = async (id: number) => {
   const token = getToken()
   try {
-    await axiosInstance.delete(`todos/${id}`, {
+    await axiosInstance.delete(`/todos/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

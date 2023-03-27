@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { createTodo } from '../../api/todo'
+import { createTodo } from '../../api/todoAPI'
 import AddBtn from '../../assets/svg/AddBtn'
 import ModalAlert from '../ModalAlert'
 import {useQueryClient, useMutation} from '@tanstack/react-query';
