@@ -4,18 +4,18 @@ import { createTodo } from '../../api/todo'
 import AddBtn from '../../assets/svg/AddBtn'
 import ModalAlert from '../ModalAlert'
 import {useQueryClient, useMutation} from '@tanstack/react-query';
-import { useForm } from "react-hook-form";
-import type { ITodoParam } from '../../type/types' 
 import { useModal } from '../../hook/useModal'
-import { validateToDoInput } from '../../utils/regex'
+import { validateTodoInput } from '../../utils/regex'
+import { todoAtom } from "../../recoil/todoAtom"
+import { useRecoilState } from "recoil"
 
-const ToDoForm = () => {
+const TodoForm = () => {
   const {isModalOpen,modalMessage,  handleModalOpen, handleModalClose} = useModal() 
   const queryClient = useQueryClient()
-  const { register, getValues, setValue } = useForm<ITodoParam>()
-  
+  const [todoData, setToDoData] = useRecoilState(todoAtom)
+
   const handleCreateModalOpen = () => {
-    if (validateToDoInput(getValues().todo)) {
+    if (validateTodoInput(todoData)) {
       handleModalOpen( '할일을 추가하시겠습니까?', 'submit')
     } else {
       handleModalOpen( '할일을 입력해주세요!', 'empty')
@@ -32,21 +32,28 @@ const ToDoForm = () => {
   }
   const handleCreate = async() => {
     try{
-      await createTodo(getValues())
-      setValue('todo','')
+      await createTodo({todo : todoData})
+      setToDoData('')
       handleModalClose()
     }catch{
     }
   }
+  
+  const onChangeToDoInput = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setToDoData(e.target.value)
+  }
+
   const {mutate} = useMutation(handleCreate,{
     onSuccess : () => queryClient.invalidateQueries(['todos'])
   })
+
+
   
   return(
     <FormWrapper>
     <InputWrapper>
       <label id="todo" />
-      <input {...register('todo')} onKeyDown={handleEnterPress}/>
+      <input type='string' value={todoData} onChange={onChangeToDoInput}  onKeyDown={handleEnterPress} />
       <div onClick={handleCreateModalOpen}>
         <AddBtn />
       </div>
@@ -79,4 +86,4 @@ const InputWrapper = styled.div`
   }
 `
 
-export default ToDoForm
+export default TodoForm
