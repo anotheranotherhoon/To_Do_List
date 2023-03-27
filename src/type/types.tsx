@@ -1,6 +1,3 @@
-// import { UseMutateFunction } from "@tanstack/react-query";
-// import { AxiosError } from "axios";
-
 export interface ITodo {
   id:number;
   todo : string;

@@ -11,7 +11,7 @@ const AddBtn = () => {
 }
 
 const StyledPath = styled.path`
-  fill : ${(props)=>props.theme.theme==='light' ? '#0050FF' : 'var(--color-green)' };
+  fill : ${(props)=>props.theme.theme==='light' ? 'var(--color-blue)' : 'var(--color-green)' };
 `
 
 export default AddBtn

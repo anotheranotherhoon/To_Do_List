@@ -6,6 +6,7 @@ import { AiFillCaretRight, AiOutlineRedo} from "react-icons/ai";
 import { RiStopFill } from "react-icons/ri";
 import styled, { keyframes } from "styled-components";
 import { useSpinner } from "../../hook/useSpinner";
+import { ITheme } from "../../type/types";
 
 const SpeechBar = () => {
   const { isSpinning, handleMouseDown, handleMouseUp} = useSpinner()
@@ -59,7 +60,8 @@ const SpeechBar = () => {
 };
 
 interface IsSpinning {
-  isSpinning  ?: boolean
+  isSpinning  ?: boolean;
+  theme : ITheme;
 }
 
 const rotate = keyframes`
@@ -74,10 +76,6 @@ const rotate = keyframes`
 const SpeechWrapper = styled.div`
   margin-left: auto;
   transition: all ease 5s;
-  svg{
-    fill:var(--color-blue);
-  }
-
 `
 const IconContainer = styled.div`
   display:flex;
@@ -88,6 +86,9 @@ const DescribeIcon = styled.div`
 `
 const IconWrapper = styled.div<IsSpinning>`
 cursor : pointer;
+svg{
+  fill :${(props : IsSpinning)=>props.theme.theme === 'light' ? 'var(--color-blue)': 'var(--color-green)' }
+  }
 #reset{
   animation: ${rotate} 0.01s linear infinite;
   animation-play-state: ${({ isSpinning }) => (isSpinning ? 'running' : 'paused')};
