@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from './page/Home'
-import Todo from './page/Todo'
+import TodoPage from './page/TodoPage'
 import { getToken } from "./utils/localeStorage"
 
 const Router = () => {
     return (
         <Routes>
             <Route path="/" element={withAuthGuard('beforeAuth', <Home />)} />
-            <Route path="/todo" element={withAuthGuard('afterAuth', <Todo />)} />
+            <Route path="/todo" element={withAuthGuard('afterAuth', <TodoPage />)} />
         </Routes>
     );
 };

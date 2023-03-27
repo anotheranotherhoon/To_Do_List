@@ -13,7 +13,7 @@ import type { ITodo } from '../type/types'
 import { useModal } from '../hook/useModal'
 import { handleLogOut } from '../utils/localeStorage'
 import { useFilter } from '../hook/useFilter'
-const Todo = () => {
+const TodoPage = () => {
   const { isModalOpen, modalMessage, handleModalOpen, handleModalClose } = useModal()
   const { filterState, handleFilter } = useFilter()
   const { data, isLoading, isError } = useQuery(
@@ -58,4 +58,4 @@ const Container = styled.div`
 
 
 
-export default Todo
+export default TodoPage
