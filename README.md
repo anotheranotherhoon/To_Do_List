@@ -2,7 +2,7 @@
 
 ### [배포 바로가기](https://to-do-list-delta-brown.vercel.app/)
 
-### 로그인 이메일// 비밀번호
+### 로그인 이메일// 비밀번호(게스트 로그인으로 이메일/비밀번호 입력 없이 접속하실 수 있습니다. )
 
 ### `1234@1234.com` // `12341234`
 
@@ -16,6 +16,7 @@
 [회고](https://velog.io/@anotherhoon/%EA%B0%9C%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8ToDoList-%ED%9A%8C%EA%B3%A0)
 
 - React-Query과 TypeScipt를 이용한 To Do List
+- 음성 인식 기능을 통해 todo를 입력할 수 있습니다. 
 - Recoil을 이용하여 다크모드를 구현하였습니다.
 - mobile first design strategy를 지향하며 반응형 웹 어플리케이션으로 제작하였습니다.
 - custom hook을 적극 사용하여 코드 재활용에 힘썼습니다.
@@ -24,21 +25,30 @@
 
 ### **🏊 구현 예시**
 
-**1) 반응형 및 다크모드**
+**1) 음성 인식 기능으로 todo 입력 기능**
+
+[목소리가 들리는 동영상 링크 바로 가기](https://youtube.com/shorts/tBFAIZkUaeU)
+<p align="center">
+  <br>
+  <img src="./images/speechRecog.gif">
+  <br>
+</p>
+
+**2) 반응형 및 다크모드**
 <p align="center">
   <br>
   <img src="./images/responsiveDark.gif">
   <br>
 </p>
 
-**2) 모달**
+**3) 모달**
 <p align="center">
   <br>
   <img src="./images/modal.gif">
   <br>
 </p>
 
-**3) custom hook으로 모달 상태 관리**
+**4) custom hook으로 모달 상태 관리**
 
 <p align="center">
   <br>
@@ -139,6 +149,7 @@ $ npm run start
 - axios
 -  react-hook-form
 - react-loader-spinner
+- react-speech-recognition
 
 </div>
 </details>
